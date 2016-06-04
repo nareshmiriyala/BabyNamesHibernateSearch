@@ -1,6 +1,7 @@
 package com.dellnaresh.controller;
 
 import com.dellnaresh.model.BabyName;
+import org.apache.lucene.queryParser.QueryParser;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Component;
@@ -35,7 +36,7 @@ public class BabyNameSearch implements NameSearch {
         // a very basic query by keywords
         org.apache.lucene.search.Query query =
                 queryBuilder
-                        .keyword()
+                        .keyword().fuzzy()
                         .onFields("name", "year", "gender","count")
                         .matching(text)
                         .createQuery();
