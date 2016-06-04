@@ -23,7 +23,7 @@ var pageController = function (/* $scope, $location, $http */) {
 
 var searchFunction = function ($scope, $http) {
     $scope.data = [];
-    $scope.viewby = 50;
+    $scope.viewby = 10;
     $scope.currentPage = 1;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5; //Number of pager buttons to show
