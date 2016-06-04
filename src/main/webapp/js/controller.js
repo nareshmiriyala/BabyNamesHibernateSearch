@@ -21,16 +21,15 @@ var pageController = function (/* $scope, $location, $http */) {
     })
 };
 
-var searchController = function ($http) {
-    var self = this;
-    self.searchResp = {};
+var searchFunction = function ($scope,$http) {
+    $scope.searchResp = {};
 
-    self.search = function () {
-        console.log("Search :" + self.query)
-        $http.post('/search', self.query)
+    $scope.search = function () {
+        console.log("Search :" + $scope.query)
+        $http.post('/search', $scope.query)
             .then(function (response) {
-                self.rateResp = response.data;
-                console.log(self.searchResp);
+                $scope.searchResp = response.data;
+                console.log($scope.searchResp);
             });
     };
 };

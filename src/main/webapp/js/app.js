@@ -3,7 +3,7 @@
  * Main AngularJS Web Application
  */
 var app = angular.module('searchApp', [
-    'ngRoute'
+    'ngRoute','ui.bootstrap'
 ]);
 
 /**
@@ -36,7 +36,7 @@ app.controller('BlogCtrl', blogController);
  */
 app.controller('PageCtrl', pageController);
 
-app.controller('searchController', ['$http', searchController]);
+app.controller('searchController', ['$scope','$http', searchFunction]);
 
 
 

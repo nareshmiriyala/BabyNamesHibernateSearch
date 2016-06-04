@@ -52,7 +52,7 @@ public class Application implements CommandLineRunner {
 
     private Reader readCSVFile() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("NationalNames.csv").getFile());
+        File file = new File(classLoader.getResource("test.csv").getFile());
         return new FileReader(file);
     }
 }

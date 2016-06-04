@@ -1,0 +1,56 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Get Rate
+                <small>Select the values!</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="../index.html">Home</a>
+                </li>
+                <li class="active">Search Name</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div ng-controller="searchController">
+            <div class="col-xs-6">
+                <form role="form" ng-submit="search()">
+                    <div class="form-group ">
+                        <label class="control-label " for="query">Search:</label>
+
+                        <input type="text" class="form-control " id="query"
+                               ng-model="query">
+                    </div>
+
+                    <input class="btn btn-success btn-block" type="submit" value="Search">
+                </form>
+                <br>
+                <div class="control-group">
+                    <div class="control-label">
+                        <h1>Search Results</h1>
+                        <h4>{{searchResp.length}} total</h4>
+                        <ul>
+                            <!--<div ng-repeat="name in mainctrl.searchResp">-->
+                                <!--<td>{{name.name}}</td>-->
+                                <!--<td>{{name.gender}}</td>-->
+                                <!--<td>{{name.year}}</td>-->
+                                <!--<td>{{name.count}}</td>-->
+                            <!--</div>-->
+                            <li ng-repeat="name in searchResp">{{name.name}} {{name.gender}} {{name.year}} {{name.count}}</li>
+                        </ul>
+                        <pagination
+                                ng-model="currentPage"
+                                total-items="searchResp.length"
+                                max-size="maxSize"
+                                boundary-links="true">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

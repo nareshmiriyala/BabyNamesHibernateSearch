@@ -19,20 +19,12 @@ public class SearchController {
     @Autowired
     private BabyNameRepository babyNameRepository;
     /**
-     * Index main page.
-     */
-    @RequestMapping("/")
-    @ResponseBody
-    public String index() {
-        return "name";
-    }
-    /**
      * Show search results for the given query.
      *
-     * @param q The search query.
+     * @param query The search query.
      */
     @RequestMapping(method = RequestMethod.POST, value = "/search",consumes = {"application/json", "application/xml"})
-    public List<BabyName> search(String query) {
+    public List<BabyName> search(@RequestBody String query) {
         List<BabyName> searchResults = null;
         try {
             searchResults = nameSearch.search(query);
