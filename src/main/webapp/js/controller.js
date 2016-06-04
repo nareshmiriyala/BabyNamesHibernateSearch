@@ -21,12 +21,14 @@ var pageController = function (/* $scope, $location, $http */) {
     })
 };
 
-var searchFunction = function ($scope,$http) {
-        $scope.data = [];
+var searchFunction = function ($scope, $http) {
+    $scope.data = [];
     $scope.viewby = 50;
     $scope.currentPage = 1;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5; //Number of pager buttons to show
+    $scope.orderByField = 'count';
+    $scope.reverseSort = true;
     $scope.search = function () {
         console.log("Search :" + $scope.query)
         $http.post('/search', $scope.query)
@@ -38,13 +40,13 @@ var searchFunction = function ($scope,$http) {
     };
 
 
-    $scope.pageChanged = function() {
+    $scope.pageChanged = function () {
         console.log('Page changed to: ' + $scope.currentPage);
     };
     $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
-    $scope.setItemsPerPage = function(num) {
+    $scope.setItemsPerPage = function (num) {
         $scope.itemsPerPage = num;
         $scope.currentPage = 1; //reset to first paghe
     };
