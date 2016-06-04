@@ -34,6 +34,7 @@ public class Application implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         CSVReader reader = new CSVReader(readCSVFile());
         List<String[]> list = reader.readAll();
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "20");
         list.parallelStream().forEach(entry -> {
             if (entry[2].equals("Year")) {
                 return;

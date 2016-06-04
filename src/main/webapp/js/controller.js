@@ -34,7 +34,6 @@ var searchFunction = function ($scope, $http) {
         $http.post('/search', $scope.query)
             .then(function (response) {
                 $scope.data = response.data;
-                console.log($scope.data);
                 $scope.totalItems = $scope.data.length;
             });
     };
