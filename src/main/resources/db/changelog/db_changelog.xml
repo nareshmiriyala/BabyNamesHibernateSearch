@@ -14,11 +14,18 @@
             </column>
             <column name="name" type="VARCHAR(255)"/>
             <column name="year" type="BIGINT"/>
-            <column name="gender" type="BIT(1)">
+            <column name="gender" type="VARCHAR(1)">
                 <constraints nullable="false"/>
             </column>
             <column name="count" type="BIGINT"/>
         </createTable>
     </changeSet>
-
+    <changeSet author="liquibase-docs" id="addUniqueConstraint-example">
+        <addUniqueConstraint
+                             columnNames="name,year,gender"
+                             constraintName="const_name"
+                             deferrable="true"
+                             tableName="BabyName"
+                             />
+    </changeSet>
 </databaseChangeLog>
