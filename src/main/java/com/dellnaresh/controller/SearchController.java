@@ -5,17 +5,14 @@ import com.dellnaresh.repo.BabyNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
  * Created by nmiriyal on 4/06/2016.
  */
-@Controller
+@RestController
 public class SearchController {
     @Autowired
     private NameSearch nameSearch;
@@ -34,19 +31,18 @@ public class SearchController {
      *
      * @param q The search query.
      */
-    @RequestMapping("/search")
-    public String search(String q, Model model) {
+    @RequestMapping(method = RequestMethod.POST, value = "/search",consumes = {"application/json", "application/xml"})
+    public List<BabyName> search(String query) {
         List<BabyName> searchResults = null;
         try {
-            searchResults = nameSearch.search(q);
+            searchResults = nameSearch.search(query);
         }
         catch (Exception ex) {
             // here you should handle unexpected errors
             // ...
             // throw ex;
         }
-        model.addAttribute("searchResults", searchResults);
-        return "search";
+        return searchResults;
     }
     @RequestMapping(value="/user", method= RequestMethod.POST)
     public String greetingSubmit(@ModelAttribute BabyName name, Model model) {
