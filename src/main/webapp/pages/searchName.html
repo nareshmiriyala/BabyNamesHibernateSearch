@@ -50,14 +50,24 @@
                                <!--&gt;-->
                         <!--</uib-pagination>-->
                         <table class="table">
+                            <thead><tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Year</th>
+                                <th>Count</th>
+                            </tr></thead>
                             <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-                                <td>{{row.name}}</td>
                                 <td>{{row.id}}</td>
+                                <td>{{row.name}}</td>
+                                <td>{{row.gender}}</td>
+                                <td>{{row.year}}</td>
+                                <td>{{row.count}}</td>
                             </tr>
                         </table>
                         View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)"><option>3</option><option>5</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option></select> records at a time.
 
-                        <ui-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></ui-pagination>
+                        <uib-pagination total-items="totalItems" ng-model="currentPage"  items-per-page="itemsPerPage"></uib-pagination>
                     </div>
                 </div>
             </div>

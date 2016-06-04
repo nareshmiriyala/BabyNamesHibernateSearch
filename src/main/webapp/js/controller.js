@@ -23,20 +23,20 @@ var pageController = function (/* $scope, $location, $http */) {
 
 var searchFunction = function ($scope,$http) {
         $scope.data = [];
-
+    $scope.viewby = 50;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = $scope.viewby;
+    $scope.maxSize = 5; //Number of pager buttons to show
     $scope.search = function () {
         console.log("Search :" + $scope.query)
         $http.post('/search', $scope.query)
             .then(function (response) {
                 $scope.data = response.data;
                 console.log($scope.data);
+                $scope.totalItems = $scope.data.length;
             });
     };
-    $scope.viewby = 10;
-    $scope.currentPage = 1;
-    $scope.itemsPerPage = $scope.viewby;
-    $scope.maxSize = 5; //Number of pager buttons to show
-    $scope.totalItems = $scope.data.length;
+
 
     $scope.pageChanged = function() {
         console.log('Page changed to: ' + $scope.currentPage);
