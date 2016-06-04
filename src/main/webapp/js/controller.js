@@ -22,14 +22,31 @@ var pageController = function (/* $scope, $location, $http */) {
 };
 
 var searchFunction = function ($scope,$http) {
-    $scope.searchResp = {};
+        $scope.data = [];
 
     $scope.search = function () {
         console.log("Search :" + $scope.query)
         $http.post('/search', $scope.query)
             .then(function (response) {
-                $scope.searchResp = response.data;
-                console.log($scope.searchResp);
+                $scope.data = response.data;
+                console.log($scope.data);
             });
     };
+    $scope.viewby = 10;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = $scope.viewby;
+    $scope.maxSize = 5; //Number of pager buttons to show
+    $scope.totalItems = $scope.data.length;
+
+    $scope.pageChanged = function() {
+        console.log('Page changed to: ' + $scope.currentPage);
+    };
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
+    $scope.setItemsPerPage = function(num) {
+        $scope.itemsPerPage = num;
+        $scope.currentPage = 1; //reset to first paghe
+    };
+
 };

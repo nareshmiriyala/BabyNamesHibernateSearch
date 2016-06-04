@@ -31,23 +31,33 @@
                 <br>
                 <div class="control-group">
                     <div class="control-label">
-                        <h1>Search Results</h1>
-                        <h4>{{searchResp.length}} total</h4>
-                        <ul>
-                            <!--<div ng-repeat="name in mainctrl.searchResp">-->
-                                <!--<td>{{name.name}}</td>-->
-                                <!--<td>{{name.gender}}</td>-->
-                                <!--<td>{{name.year}}</td>-->
-                                <!--<td>{{name.count}}</td>-->
-                            <!--</div>-->
-                            <li ng-repeat="name in searchResp">{{name.name}} {{name.gender}} {{name.year}} {{name.count}}</li>
-                        </ul>
-                        <pagination
-                                ng-model="currentPage"
-                                total-items="searchResp.length"
-                                max-size="maxSize"
-                                boundary-links="true">
-                        </pagination>
+                        <!--<h1>Search Results</h1>-->
+                        <!--<h4>{{searchResp.length}} total</h4>-->
+                        <!--<ul>-->
+                            <!--&lt;!&ndash;<div ng-repeat="name in mainctrl.searchResp">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>{{name.name}}</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>{{name.gender}}</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>{{name.year}}</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>{{name.count}}</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--<li ng-repeat="name in filteredTodos">{{name.name}} {{name.gender}} {{name.year}} {{name.count}}</li>-->
+                        <!--</ul>-->
+                        <!--<uib-pagination-->
+                                <!--ng-model="currentPage"-->
+                                <!--total-items="totalItems"-->
+                                <!--items-per-page="itemsPerPage"-->
+                                <!--ng-change="pageChanged()" class="pagination-sm"-->
+                               <!--&gt;-->
+                        <!--</uib-pagination>-->
+                        <table class="table">
+                            <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                                <td>{{row.name}}</td>
+                                <td>{{row.id}}</td>
+                            </tr>
+                        </table>
+                        View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)"><option>3</option><option>5</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option></select> records at a time.
+
+                        <ui-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></ui-pagination>
                     </div>
                 </div>
             </div>
