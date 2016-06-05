@@ -3,7 +3,7 @@
     <div class="row">
 
         <div class="col-lg-12">
-            <h1 class="page-header">Get Rate
+            <h1 class="page-header">Search Baby Names
                 <small>Select the values!</small>
             </h1>
             <ol class="breadcrumb">
@@ -27,14 +27,17 @@
                     </div>
 
                     <input class="btn btn-success btn-block" type="submit" value="Search">
+                    <button class="btn btn-block" ng-click="insertRecords()">Insert</button>
+                    <button class="btn btn-block" ng-click="indexRecords()">Index</button>
                 </form>
                 <br>
                 <div class="control-group">
                     <div class="control-label">
                         <table class="table table-bordered">
                             <thead>
-                            <tr><th>
-                                Id
+                            <tr>
+                                <th>
+                                    Id
                                 </th>
                                 <th>Name</th>
                                 <th>Gender</th>

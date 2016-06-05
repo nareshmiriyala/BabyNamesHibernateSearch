@@ -50,5 +50,5 @@ public class BabyNameSearch implements NameSearch {
         List<BabyName> results = jpaQuery.getResultList();
 
         return results;
-    } // method search
+    }
 }

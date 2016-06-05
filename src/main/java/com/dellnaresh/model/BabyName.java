@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "babyname")
 public class BabyName {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Field
     @NotNull
@@ -32,7 +31,8 @@ public class BabyName {
     public BabyName() {
     }
 
-    public BabyName(String name, int year, Character gender, int count) {
+    public BabyName(long id,String name, int year, Character gender, int count) {
+        this.id=id;
         this.name = name;
         this.year = year;
         this.gender = gender;

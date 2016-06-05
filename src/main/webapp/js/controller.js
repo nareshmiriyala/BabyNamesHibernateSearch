@@ -37,7 +37,14 @@ var searchFunction = function ($scope, $http) {
                 $scope.totalItems = $scope.data.length;
             });
     };
-
+    $scope.insertRecords=function () {
+        console.log("Inserting Records");
+        $http.post('/insertRecords');
+    };
+    $scope.indexRecords=function () {
+        console.log("Indexing Records");
+        $http.post('/indexRecords');
+    };
 
     $scope.pageChanged = function () {
         console.log('Page changed to: ' + $scope.currentPage);
