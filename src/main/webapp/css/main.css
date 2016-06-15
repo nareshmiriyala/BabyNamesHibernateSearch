@@ -142,3 +142,7 @@ div.addrate {
     padding: 20px;
 
 }
+
+div.alt-success {
+    background-color: lightblue;
+}

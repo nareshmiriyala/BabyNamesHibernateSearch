@@ -38,11 +38,20 @@ var searchFunction = function ($scope, searchFactory, dbInsert, elasticIndex) {
             });
     };
     $scope.insertRecords = function () {
-        dbInsert.insertDbRecords();
+        dbInsert.insertDbRecords().success(function () {
+            $scope.message = "Successfully inserted records."
+        }).error(function () {
+            $scope.message = "Failed to insert records"
+        });
     };
 
     $scope.indexRecords = function () {
-        elasticIndex.indexSearchResults();
+        elasticIndex.indexSearchResults().success(function () {
+            $scope.message = "Indexing records completed"
+        }).error(function () {
+            $scope.message = "Failed to index records"
+        });
+        ;
 
     };
 
