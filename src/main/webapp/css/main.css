@@ -18,9 +18,8 @@ body {
 }
 
 .dropdown {
-    cursor:pointer;
+    cursor: pointer;
 }
-
 
 .img-home-portfolio,
 .img-customer,
@@ -136,9 +135,9 @@ footer {
     }
 }
 
-div.addrate{
-/*outline: 2px solid green;*/
- border-radius: 25px;
+div.addrate {
+    /*outline: 2px solid green;*/
+    border-radius: 25px;
     border: 2px solid #8AC007;
     padding: 20px;
 

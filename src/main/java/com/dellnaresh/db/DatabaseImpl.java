@@ -21,9 +21,9 @@ import static java.util.Objects.isNull;
  */
 @Component
 public class DatabaseImpl implements Database {
-    private Logger logger = LoggerFactory.getLogger(DatabaseImpl.class);
     @Autowired
     BabyNameRepository babyNameRepository;
+    private Logger logger = LoggerFactory.getLogger(DatabaseImpl.class);
 
     @Override
     public void insert() throws Exception {
@@ -36,16 +36,16 @@ public class DatabaseImpl implements Database {
             }
             BabyName babyName = createBabyName(entry);
             BabyName name = babyNameRepository.findOne(babyName.getId());
-            if(isNull(name)) {
-            logger.info("Inserting {}", babyName);
-            babyNameRepository.save(babyName);
+            if (isNull(name)) {
+                logger.info("Inserting {}", babyName);
+                babyNameRepository.save(babyName);
             }
 
         });
     }
 
     private BabyName createBabyName(String[] entry) {
-        return new BabyName(Long.parseLong(entry[0]),entry[1], Integer.parseInt(entry[2]), entry[3].charAt(0), Integer.parseInt(entry[4]));
+        return new BabyName(Long.parseLong(entry[0]), entry[1], Integer.parseInt(entry[2]), entry[3].charAt(0), Integer.parseInt(entry[4]));
     }
 
     private Reader readCSVFile() throws FileNotFoundException {

@@ -21,7 +21,7 @@ var pageController = function (/* $scope, $location, $http */) {
     })
 };
 
-var searchFunction = function ($scope, $http) {
+var searchFunction = function ($scope, searchFactory, dbInsert, elasticIndex) {
     $scope.data = [];
     $scope.viewby = 10;
     $scope.currentPage = 1;
@@ -31,19 +31,19 @@ var searchFunction = function ($scope, $http) {
     $scope.reverseSort = true;
     $scope.search = function () {
         console.log("Search :" + $scope.query)
-        $http.post('/search', $scope.query)
+        searchFactory.getSearchResults($scope.query)
             .then(function (response) {
                 $scope.data = response.data;
                 $scope.totalItems = $scope.data.length;
             });
     };
-    $scope.insertRecords=function () {
-        console.log("Inserting Records");
-        $http.post('/insertRecords');
+    $scope.insertRecords = function () {
+        dbInsert.insertDbRecords();
     };
-    $scope.indexRecords=function () {
-        console.log("Indexing Records");
-        $http.post('/indexRecords');
+
+    $scope.indexRecords = function () {
+        elasticIndex.indexSearchResults();
+
     };
 
     $scope.pageChanged = function () {

@@ -1,9 +1,8 @@
-
 /**
  * Main AngularJS Web Application
  */
 var app = angular.module('searchApp', [
-    'ngRoute','ui.bootstrap'
+    'ngRoute', 'ui.bootstrap'
 ]);
 
 /**
@@ -26,17 +25,22 @@ app.config(['$routeProvider', function ($routeProvider) {
         .otherwise("/404", {templateUrl: "pages/404.html", controller: "PageCtrl"});
 }]);
 
+app.service('searchFactory', searchService);
+app.service('dbInsert', dbInsert);
+app.service('elasticIndex', elasticIndex);
+
 /**
  * Controls the Blog
  */
 app.controller('BlogCtrl', blogController);
+
 
 /**
  * Controls all other Pages
  */
 app.controller('PageCtrl', pageController);
 
-app.controller('searchController', ['$scope','$http', searchFunction]);
+app.controller('searchController', ['$scope', 'searchFactory', 'dbInsert', 'elasticIndex', searchFunction]);
 
 
 

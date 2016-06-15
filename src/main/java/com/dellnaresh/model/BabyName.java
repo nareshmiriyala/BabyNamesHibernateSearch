@@ -3,7 +3,9 @@ package com.dellnaresh.model;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -31,8 +33,8 @@ public class BabyName {
     public BabyName() {
     }
 
-    public BabyName(long id,String name, int year, Character gender, int count) {
-        this.id=id;
+    public BabyName(long id, String name, int year, Character gender, int count) {
+        this.id = id;
         this.name = name;
         this.year = year;
         this.gender = gender;

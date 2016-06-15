@@ -6,13 +6,7 @@ export function isValid(m) {
     if (m._isValid == null) {
         var flags = getParsingFlags(m);
         m._isValid = !isNaN(m._d.getTime()) &&
-            flags.overflow < 0 &&
-            !flags.empty &&
-            !flags.invalidMonth &&
-            !flags.invalidWeekday &&
-            !flags.nullInput &&
-            !flags.invalidFormat &&
-            !flags.userInvalidated;
+            flags.overflow < 0 && !flags.empty && !flags.invalidMonth && !flags.invalidWeekday && !flags.nullInput && !flags.invalidFormat && !flags.userInvalidated;
 
         if (m._strict) {
             m._isValid = m._isValid &&
@@ -24,7 +18,7 @@ export function isValid(m) {
     return m._isValid;
 }
 
-export function createInvalid (flags) {
+export function createInvalid(flags) {
     var m = createUTC(NaN);
     if (flags != null) {
         extend(getParsingFlags(m), flags);

@@ -7,7 +7,7 @@ if (testMinified) {
     subject = 'js/ngDialog.js';
 }
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
         basePath: '',
         frameworks: ['jasmine'],
@@ -34,13 +34,13 @@ module.exports = function(config) {
             'karma-jasmine'
         ],
         coverageReporter: {
-          reporters: [{
+            reporters: [{
                 type: 'html',
                 subdir: 'report-html'
-          }, {
+            }, {
                 type: 'lcov',
                 subdir: 'report-lcov'
-          }]
+            }]
         }
     });
 };

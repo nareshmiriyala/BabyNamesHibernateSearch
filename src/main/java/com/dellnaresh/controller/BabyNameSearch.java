@@ -18,6 +18,7 @@ import java.util.List;
 public class BabyNameSearch implements NameSearch {
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public List<BabyName> search(String text) {
 

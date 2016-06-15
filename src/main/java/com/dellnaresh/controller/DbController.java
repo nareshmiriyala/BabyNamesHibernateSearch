@@ -20,7 +20,9 @@ public class DbController {
     @RequestMapping(method = RequestMethod.POST, value = "/insertRecords")
     public void insert() {
         try {
+            logger.info("Started db update");
             db.insert();
+            logger.info("Completed db update");
         } catch (Exception e) {
             logger.error("Exception inserting records", e);
         }

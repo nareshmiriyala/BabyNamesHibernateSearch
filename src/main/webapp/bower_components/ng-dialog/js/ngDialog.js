@@ -15,7 +15,7 @@
     } else if (typeof define === 'function' && define.amd) {
         // AMD
         define(['ng-dialog'], function () {
-          factory(root.angular);
+            factory(root.angular);
         });
     } else {
         // Global Variables
@@ -33,7 +33,7 @@
     var animationEndEvent = 'animationend webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend';
     var focusableElementSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
     var disabledAnimationClass = 'ngdialog-disabled-animation';
-    var forceElementsReload = { html: false, body: false };
+    var forceElementsReload = {html: false, body: false};
     var scopes = {};
     var openIdStack = [];
     var keydownIsBound = false;
@@ -86,7 +86,7 @@
                         }
                     },
 
-                    activate: function($dialog) {
+                    activate: function ($dialog) {
                         var options = $dialog.data('$ngDialogOptions');
 
                         if (options.trapFocus) {
@@ -103,7 +103,7 @@
                     },
 
                     deactivateAll: function (els) {
-                        angular.forEach(els,function(el) {
+                        angular.forEach(els, function (el) {
                             var $dialog = angular.element(el);
                             privateMethods.deactivate($dialog);
                         });
@@ -149,7 +149,7 @@
                             $elements.body.unbind('keydown', privateMethods.onDocumentKeydown);
                         }
 
-                        if (!$dialog.hasClass('ngdialog-closing')){
+                        if (!$dialog.hasClass('ngdialog-closing')) {
                             dialogsCount -= 1;
                         }
 
@@ -188,7 +188,7 @@
                         }
                     },
 
-                    closeDialogElement: function($dialog, value) {
+                    closeDialogElement: function ($dialog, value) {
                         $dialog.remove();
                         if (dialogsCount === 0) {
                             $elements.html.removeClass('ngdialog-open');
@@ -225,7 +225,7 @@
                         }
                     },
 
-                    onTrapFocusKeydown: function(ev) {
+                    onTrapFocusKeydown: function (ev) {
                         var el = angular.element(ev.currentTarget);
                         var $dialog;
 
@@ -247,7 +247,7 @@
                         }
                     },
 
-                    handleTab: function($dialog, ev, backward) {
+                    handleTab: function ($dialog, ev, backward) {
                         var focusableElements = privateMethods.getFocusableElements($dialog);
 
                         if (focusableElements.length === 0) {
@@ -284,7 +284,7 @@
                         }
                     },
 
-                    autoFocus: function($dialog) {
+                    autoFocus: function ($dialog) {
                         var dialogEl = $dialog[0];
 
                         // Browser's (Chrome 40, Forefix 37, IE 11) don't appear to honor autofocus on the dialog, but we should
@@ -396,7 +396,7 @@
                             $dialog, 'aria-describedby', options.ariaDescribedById, options.ariaDescribedBySelector);
                     },
 
-                    applyAriaAttribute: function($dialog, attr, id, selector) {
+                    applyAriaAttribute: function ($dialog, attr, id, selector) {
                         if (id) {
                             $dialog.attr(attr, id);
                         }
@@ -420,18 +420,18 @@
                         }
                     },
 
-                    detectUIRouter: function() {
+                    detectUIRouter: function () {
                         //Detect if ui-router module is installed if not return false
                         try {
                             angular.module('ui.router');
                             return true;
-                        } catch(err) {
+                        } catch (err) {
                             return false;
                         }
                     },
 
-                    getRouterLocationEventName: function() {
-                        if(privateMethods.detectUIRouter()) {
+                    getRouterLocationEventName: function () {
+                        if (privateMethods.detectUIRouter()) {
                             return '$stateChangeSuccess';
                         }
                         return '$locationChangeSuccess';
@@ -493,8 +493,8 @@
                             var hasOverlayClass = options.overlay ? '' : ' ngdialog-no-overlay';
                             $dialog = $el('<div id="ngdialog' + localID + '" class="ngdialog' + hasOverlayClass + '"></div>');
                             $dialog.html((options.overlay ?
-                                '<div class="ngdialog-overlay"></div><div class="ngdialog-content" role="document">' + template + '</div>' :
-                                '<div class="ngdialog-content" role="document">' + template + '</div>'));
+                            '<div class="ngdialog-overlay"></div><div class="ngdialog-content" role="document">' + template + '</div>' :
+                            '<div class="ngdialog-content" role="document">' + template + '</div>'));
 
                             $dialog.data('$ngDialogOptions', options);
 
@@ -560,11 +560,11 @@
                                 }
 
                                 var controllerInstance = $controller(options.controller, angular.extend(
-                                    locals,
-                                    {
-                                        $scope: scope,
-                                        $element: $dialog
-                                    }),
+                                        locals,
+                                        {
+                                            $scope: scope,
+                                            $element: $dialog
+                                        }),
                                     null,
                                     label
                                 );
@@ -643,15 +643,15 @@
                             }
                         };
 
-                        function loadTemplateUrl (tmpl, config) {
+                        function loadTemplateUrl(tmpl, config) {
                             $rootScope.$broadcast('ngDialog.templateLoading', tmpl);
-                            return $http.get(tmpl, (config || {})).then(function(res) {
+                            return $http.get(tmpl, (config || {})).then(function (res) {
                                 $rootScope.$broadcast('ngDialog.templateLoaded', tmpl);
                                 return res.data || '';
                             });
                         }
 
-                        function loadTemplate (tmpl) {
+                        function loadTemplate(tmpl) {
                             if (!tmpl) {
                                 return 'Empty template';
                             }
@@ -711,7 +711,7 @@
                         return defer.promise;
                     },
 
-                    isOpen: function(id) {
+                    isOpen: function (id) {
                         var $dialog = $el(document.getElementById(id));
                         return $dialog.length > 0;
                     },
@@ -750,7 +750,7 @@
                         }
                     },
 
-                    getOpenDialogs: function() {
+                    getOpenDialogs: function () {
                         return openIdStack;
                     },
 
@@ -761,7 +761,7 @@
 
                 angular.forEach(
                     ['html', 'body'],
-                    function(elementName) {
+                    function (elementName) {
                         $elements[elementName] = $document.find(elementName);
                         if (forceElementsReload[elementName]) {
                             var eventName = privateMethods.getRouterLocationEventName();
